@@ -1,0 +1,14 @@
+
+
+img{
+    width: 50px;
+    height: 100px;
+}
+
+main {
+    width: 500px;
+    margin: 0 auto;
+
+    border: 1px solid #000;
+    padding: 20px;
+}
