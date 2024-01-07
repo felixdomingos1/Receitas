@@ -11,40 +11,13 @@
 
         <title>Receitas</title>
 
-        <style>
-            *{
-                text-decoration: none;
-                list-style: none;
-                font-family: sans-serif;
-                color: #000;
-                margin: 0;
-                padding: 0;
-            }
-            header{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding:30px 70px;
-            }
-
-            nav ul{
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-
-            header{
-                box-shadow: 1px 2px 3px #000;
-            }
-        </style>
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/home.css">
     
     </head>
     <body>
        <header>
-            <img src="" alt="">
-
+        <span></span>
             <nav>
                 @auth
                     <form action="{{ route('logout') }}" method="POST">
@@ -61,7 +34,7 @@
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
-                <form action="">
+                <form action="" id="publicReceitas" name="publicReceitas">
                     <input type="text">
                     <button type="submit">Enviar</button>
                 </form>
@@ -71,7 +44,7 @@
                          <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
                     </div>
                     <div class="right">
-                        
+                            nlknlkn
                     </div>
                 </div>
             </main>
