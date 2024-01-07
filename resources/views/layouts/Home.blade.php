@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -40,18 +44,32 @@
             <img src="" alt="">
 
             <nav>
-                <ul>
-                    <li><a href="{{ route('login') }}"> ENTRAR</a></li>
-
-                    <li><!-- resources/views/layouts/app.blade.php ou onde quer que seus links/botões de registro estejam -->
-                        @guest
-                            <a href="{{ route('register') }}">Register</a>
-                        @endguest
-                    </li>
-
-                </ul>
+                @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                @endauth
 
             </nav>
         </header>
+
+<!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
+
+            <main>
+
+                <div class="receita">
+                    <div class="left">
+                         <img src="" alt="">
+                    </div>
+                    <div class="right">
+                        
+                    </div>
+                </div>
+            </main>
+
     </body>
 </html>
+
