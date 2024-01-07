@@ -64,6 +64,10 @@
                      <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
                     <h2>O funge de bombo</h2>
                 </div>
+                <div class="rigt">
+                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
+                    <h2>O funge de bombo</h2>
+                </div>
             </div>
         </main>
     </body>
