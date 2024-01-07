@@ -56,7 +56,20 @@
             </nav>
         </header>
 
-        LOGADO
+<!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
+
+            <main>
+
+                <div class="receita">
+                    <div class="left">
+                         <img src="" alt="">
+                    </div>
+                    <div class="right">
+                        
+                    </div>
+                </div>
+            </main>
+
     </body>
 </html>
 

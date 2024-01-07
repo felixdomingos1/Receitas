@@ -35,7 +35,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('layouts/Home'); // Redirecionar para a página desejada após o login
+            return redirect()->intended('/'); // Redirecionar para a página desejada após o login
         }
 
         return redirect('/login')->with('error', 'Credenciais inválidas');
@@ -44,7 +44,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/app');
+        return redirect('/');
     }
 
 

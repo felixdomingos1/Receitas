@@ -40,9 +40,11 @@
 </head>
 <body>
     <form method="POST" action="{{ route('register') }}">
+
         @csrf
 
         <input type="text" name="first_name" id="first_name" placeholder="primeiro nome">
+
         <input type="text" name="last_name" id="last_name" placeholder="ultimo nome">
         <input type="email" name="email" id="email" placeholder="email">
         <input type="password" name="password" id="password" placeholder="palavra passe">

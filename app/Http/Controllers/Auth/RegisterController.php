@@ -36,23 +36,42 @@ class RegisterController extends Controller
         return view('Auth/SignUp');
     }
 
+    // public function register(Request $request)
+    // {
+    //     $this->validator($request->all())->validate();
+
+    //     $this->create($request->all());
+
+    //     return redirect($this->redirectPath());
+    // }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
-        $this->create($request->all());
+        $user = $this->create($request->all());
 
-        return redirect($this->redirectPath());
+        $this->guard()->login($user); // Faz o login automaticamente após o registro
+
+        return $this->registered($request, $user)
+        ?: redirect($this->redirectPath())->with('errorMessage', $user);
     }
 
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+         $validator= Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
+        ],$this->messages());
+
+        if ($validator->fails()) {
+            $errorMessage = $validator->messages()->messages();
+            return view('Auth/SignUp', compact('errorMessage'));
+        }
+
+        return $validator;
     }
 
     protected function create(array $data)
@@ -63,6 +82,14 @@ class RegisterController extends Controller
             'email'=>$data['email'],
             'password'=>Hash::make($data['password'])
         ]);
+    }
+
+
+    protected function messages()
+    {
+        return [
+            'password.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.',
+        ];
     }
 
 }
