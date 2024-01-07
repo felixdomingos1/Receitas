@@ -31,6 +31,7 @@
             </nav>
         </header>
 
+<<<<<<< HEAD
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
@@ -49,6 +50,22 @@
                 </div>
             </main>
 
+=======
+        <main>
+            klknlk
+            <div class="receita">
+                klk
+                <div class="left">
+                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
+                    <h2>O funge de bombo</h2>
+                </div>
+                <div class="rigt">
+                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
+                    <h2>O funge de bombo</h2>
+                </div>
+            </div>
+        </main>
+>>>>>>> main
     </body>
 </html>
 
