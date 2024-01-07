@@ -31,7 +31,6 @@
             </nav>
         </header>
 
-<<<<<<< HEAD
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
@@ -43,29 +42,59 @@
                 <div class="receita">
                     <div class="left">
                          <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
+                         <h2>Arroz com Feijão</h2>
                     </div>
                     <div class="right">
-                            nlknlkn
+                    <h2>RECEITAS</h2>
+
+                        <ul >
+                            <li>Arroz 1kz</li>
+                            <li>Massa a goso</li>
+                            <li>Agua a gosto</li>
+                            <li>Tigela a gosto</li>
+                        </ul>
+
+                        <h2>Modo de preparo</h2>
+
+                        <ul>
+                        <li>Arroz 1kz</li>
+                        <li>Massa a goso</li>
+                        <li>Agua a gosto</li>
+                        <li>Tigela a gosto</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="receita">
+                    <div class="left">
+                         <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
+                         <h2>Arroz com Feijão</h2>
+                    </div>
+                    <div class="right">
+                           <h2>RECEITAS</h2>
+
+                            <ul >
+                                <li>Arroz 1kz</li>
+                                <li>Massa a goso</li>
+                                <li>Agua a gosto</li>
+                                <li>Tigela a gosto</li>
+                            </ul>
+
+                           <h2>Modo de preparo</h2>
+
+                           <ul>
+                            <li>Arroz 1kz</li>
+                            <li>Massa a goso</li>
+                            <li>Agua a gosto</li>
+                            <li>Tigela a gosto</li>
+                           </ul>
+
                     </div>
                 </div>
             </main>
 
-=======
-        <main>
-            klknlk
-            <div class="receita">
-                klk
-                <div class="left">
-                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
-                    <h2>O funge de bombo</h2>
-                </div>
-                <div class="rigt">
-                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
-                    <h2>O funge de bombo</h2>
-                </div>
-            </div>
-        </main>
->>>>>>> main
+
     </body>
 </html>
 
