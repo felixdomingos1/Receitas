@@ -89,12 +89,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
         4- colocar o método que está a ser usando dentro d controller.
         5-informar o nome da route(esso tbem é importante porq vamos precisa-lo para chamar a rotas no html ou seja blade da view)
 # o que é  a view 
-<<<<<<< HEAD
-
-# O qué o controller
-=======
-    Todas as folhas que aparece na tela chamamos de view
 
 # O qué o controller
     As files da view são controladas pelos Controller, controller estes que têm forma de class.
->>>>>>> main
