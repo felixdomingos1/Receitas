@@ -56,7 +56,16 @@
             </nav>
         </header>
 
-        LOGADO
+        <main>
+            klknlk
+            <div class="receita">
+                klk
+                <div class="left">
+                     <img src="pratodecomidafotomarcossantos003.jpg" alt="Descrição da Imagem">
+                    <h2>O funge de bombo</h2>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
 
