@@ -64,3 +64,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+
+
+# ##########Instrucção para instalar um projecto laravel 10
+  #  composer install
+  # duplicar o arquivo .env.exemple
+  # gerar a chave com o comando: php artisan key:generate
+  # inicializar o projecto
+  # e vualaaaaaa!!
+
+# Como funcionam as routas 
+    Rotas são caminhos que nós escrevemos 
+# o que é  a view 
+
+# O qué o controller
