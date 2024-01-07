@@ -79,7 +79,15 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   # e vualaaaaaa!!
 
 # Como funcionam as routas 
-    Rotas são caminhos que nós escrevemos 
+    Rotas são caminhos que nós escrevemos para acessarmos files html, que em php chamamos de blade. blade estas que estão localizadas nas views.
+
+    Para declara-la é muito simples, basta escrever 
+        1-Route
+        2-Informar o método a ser usado (get,post,put,delete etc.)
+        2-Colocar o caminho url(é muito importante esto,porque é com este caminho que vamos acessa-lo no navegador).
+        3-informar a classe do controller
+        4- colocar o método que está a ser usando dentro d controller.
+        5-informar o nome da route(esso tbem é importante porq vamos precisa-lo para chamar a rotas no html ou seja blade da view)
 # o que é  a view 
 
 # O qué o controller
