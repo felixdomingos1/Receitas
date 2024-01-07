@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +37,8 @@
                 box-shadow: 1px 2px 3px #000;
             }
         </style>
-
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/home.css">
     
     </head>
     <body>
@@ -59,10 +61,14 @@
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
+                <form action="">
+                    <input type="text">
+                    <button type="submit">Enviar</button>
+                </form>
 
                 <div class="receita">
                     <div class="left">
-                         <img src="" alt="">
+                         <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
                     </div>
                     <div class="right">
                         

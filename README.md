@@ -93,3 +93,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # O qué o controller
     As files da view são controladas pelos Controller, controller estes que têm forma de class.
+
