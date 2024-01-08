@@ -9,40 +9,45 @@ use Laravel\Ui\Presets\Vue;
 class HomeController extends Controller
 {
     
-    public function index()
+    public function __construct()
     {
-        if (Auth::id()) {
+        $this->middleware('auth')->except('showApp');
+    }
+    // public function index()
+    // {
+    //     if (Auth::id()) {
 
-            $userType = Auth()->user()->userType;
+    //         $userType = Auth()->user()->userType;
 
-            if ($userType === 'admin') {
-                return view('Admin/adminHome');
-            }
-            elseif ($userType ==='user') {
-                return view('layouts/Home');
+    //         if ($userType === 'admin') {
+    //             return view('Admin/adminHome');
+    //         }
+    //         if($userType ==='user') {
+    //             return view('layouts/Home');
 
-            } else {
-                return view('layouts/Home');
-            }
+    //         } 
+    //     }
+    // }
+
+
+    // public function show()
+    // {
+    //    return  view('layouts/Home');
+    // }
+
+//minhas cenas!!!
+
+        public function index()  {
+            return route('layout.home');
         }
-        return view('layouts/Home');
 
+
+
+
+
+    public function showApp() {
+        return view('app');
     }
 
 
-    public function show()
-    {
-       return  view('layouts/Home');
-    }
-
-    // public function store()
-    // {
-    //    return view('Auth/SignUp');
-    // }
-
-
-    // public function destroy()
-    // {
-    //     dd('Litar');
-    // }
 }
