@@ -51,7 +51,7 @@ class RegisterController extends Controller
              $request-> validate([
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
             ]);
 
@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $this->guard()->login($user); // Faz o login automaticamente após o registro
     
             return $this->registered($request, $user)
-            ?: redirect($this->redirectPath())->with('errorMessage', $user);
+            ?: redirect($this->redirectPath());
     
         }catch (ValidationException $e) {
             // A validação falhou, você pode acessar os erros assim:
