@@ -23,12 +23,16 @@
         @endif
             <nav>
                 @auth
+
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">Logout</button>
                     </form>
                 @else
+
                     <a href="{{ route('login') }}">Login</a>
+                    DIFERENTE
+                    <a href="{{ route('register') }}">Register</a>
                 @endauth
 
             </nav>
@@ -37,10 +41,12 @@
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
+               @auth
                 <form action="" id="publicReceitas" name="publicReceitas">
-                    <input type="text">
-                    <button type="submit">Enviar</button>
-                </form>
+                        <input type="text">
+                        <button type="submit">Enviar</button>
+                    </form>
+               @endauth
 
                 <div class="receita">
                     <div class="left">

@@ -22,17 +22,17 @@ class HomeController extends Controller
                 return view('layouts/Home');
 
             } else {
-                return view('app');
+                return view('layouts/Home');
             }
         }
-        return view('app');
+        return view('layouts/Home');
 
     }
 
 
     public function show()
     {
-       return  view('app');
+       return  view('layouts/Home');
     }
 
     // public function store()

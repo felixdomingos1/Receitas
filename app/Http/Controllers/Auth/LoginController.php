@@ -36,9 +36,10 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
-            $user = User::where('email', $credentials['email']);
             return redirect()->intended('/')->with('user', $credentials); // Redirecionar para a página desejada após o login
+            
+        }else {
+            return back()->withErrors(['login' => 'Credenciais inválidas.']);
         }
 
         return redirect('/login')->with('error', 'Credenciais inválidas');
