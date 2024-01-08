@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/'); // Redirecionar para a página desejada após o login
+
+            $user = User::where('email', $credentials['email']);
+            return redirect()->intended('/')->with('user', $credentials); // Redirecionar para a página desejada após o login
         }
 
         return redirect('/login')->with('error', 'Credenciais inválidas');

@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $this->guard()->login($user); // Faz o login automaticamente após o registro
     
             return $this->registered($request, $user)
-            ?: redirect($this->redirectPath())->with('errorMessage', $user);
+            ?: redirect($this->redirectPath());
     
         }catch (ValidationException $e) {
             // A validação falhou, você pode acessar os erros assim:

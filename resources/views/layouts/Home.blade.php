@@ -17,7 +17,10 @@
     </head>
     <body>
        <header>
-        <span></span>
+       <span></span>
+       @if($userData)
+            <p>Olá, {{ $userData-> first_name}}</p>
+        @endif
             <nav>
                 @auth
                     <form action="{{ route('logout') }}" method="POST">
