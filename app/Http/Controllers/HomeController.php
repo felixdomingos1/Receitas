@@ -14,17 +14,10 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
 
-            $userType = Auth()->user()->userType;
-
-            if ($userType === 'admin') {
-                return view('admin.adminHome');
-            }
-            if ($userType ==='user') {
+           
                 $receitas = Receitas::all();
 
                 return view('layouts.home')->with('receitas',$receitas );
-
-            } 
         }
 
     }

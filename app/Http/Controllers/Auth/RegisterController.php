@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        if (Auth::id()) {
+        if (! Auth::id()) {
             return view('layouts.home');
         }
         return view('auth.signUp');
