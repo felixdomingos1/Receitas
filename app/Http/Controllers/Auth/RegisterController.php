@@ -36,13 +36,24 @@ class RegisterController extends Controller
         return view('auth.signup');
     }
 
+  
+
+    public function index()
+    {
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+        return view('auth.signUp');
+    }
+
+
     public function register(Request $request)
     {
-        // $this->validator($request->all())->validate();
         try {
              $request-> validate([
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
+                // 'userType ' => ['required', 'string|in:usuario,administrador'],
                 'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
                 'userType' => 'required| string|in:usuario,administrador',
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
@@ -50,7 +61,7 @@ class RegisterController extends Controller
 
             $user = $this->create($request->all());
 
-            $this->guard()->login($user); // Faz o login automaticamente após o registro
+            $this->guard()->login($user);
     
             // return $this->registered($request, $user)
             
@@ -67,25 +78,14 @@ class RegisterController extends Controller
  
     }
 
-    // protected function validator(array $data)
-    // {
-    //      $validator= Validate::make($data, [
-    
-    //     ],$this->messages());
 
-    //     if ($validator->fails()) {
-    //         $errorMessage = $validator->messages()->messages();
-    //         return view('Auth/SignUp', compact('errorMessage'));
-    //     }
-
-    //     return $validator;
-    // }
 
     protected function create(array $data)
     {
         return User::create([
             'first_name'=>$data['first_name'],
             'last_name'=>$data['last_name'],
+            'userType'=> $data['userType'],
             'email'=>$data['email'],
             'password'=>Hash::make($data['password'])
         ]);

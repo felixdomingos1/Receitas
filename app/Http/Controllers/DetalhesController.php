@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receitas;
 use Illuminate\Http\Request;
 
 class DetalhesController extends Controller
@@ -12,6 +13,11 @@ class DetalhesController extends Controller
     public function index()
     {
         //
+    public function index($receitaId)
+    {
+        $receita = Receitas::find($receitaId);
+        
+        return view('layouts.detalhes')->with('receita', $receita);
     }
 
     /**
@@ -20,6 +26,7 @@ class DetalhesController extends Controller
     public function create()
     {
         //    
+        //
     }
 
     /**

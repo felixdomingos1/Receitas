@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Receitas;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -15,14 +16,17 @@ class LoginController extends Controller
    
     use AuthenticatesUsers;
 
-    public function showLoginForm() 
+    public function index() 
     {
 
     public function index() {
         if (Auth::id()) {
             return view('layouts.home');
         }
-
+        if (Auth::id()) {
+            $receitas = Receitas::all();
+            return view('layouts.home')->with('receitas',$receitas );
+        }
         return view('auth.login');
     }
 
@@ -36,6 +40,12 @@ class LoginController extends Controller
             
         }else {
             return back()->withErrors(['login' => 'Credenciais inválidas.']);
+            if (Auth::attempt($credentials)) {
+
+            $user = User::where('email', $credentials['email']);
+            $receitas = Receitas::all();
+
+            return view('layouts.home')->with( 'receitas',$receitas); // Redirecionar para a página desejada após o login
         }
 
         return redirect('/login')->with('error', 'Credenciais inválidas');

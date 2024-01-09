@@ -18,7 +18,7 @@
                 <input type="password" name="password" id="password" placeholder="Password">
                 <button type="submit">Login</button>
                 <a href="{{route('home')}}"> continuar anonimo </a>
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('signup') }}">Register</a>
             </form>
         </div>
     </div>
