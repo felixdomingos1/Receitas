@@ -17,6 +17,7 @@
         <h2>Signup</h2>
         <input type="text" name="first_name" id="first_name" placeholder="Primeiro nome">
         <input type="text" name="last_name" id="last_name" placeholder="Último nome">
+        <input type="text" name="userType" id="userType" placeholder="Tipo de usuario">
         <input type="email" name="email" id="email" placeholder="Email">
         <input type="password"name="password" id="password" placeholder="Palavra Passe">
         <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Palavra Passe">
