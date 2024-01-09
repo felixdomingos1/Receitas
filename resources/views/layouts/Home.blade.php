@@ -41,11 +41,22 @@
 
             <main>
                 <form  class='form' action="" id="publicReceitas" name="publicReceitas">
-                    <input type="text" >
-                    <button type="submit" onclick='Postar()'>Publicar</button>
+                    <input type="text" id="openModal">
+                    <button >Publicar</button>
                 </form>
-
-                
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Publicação</h2>
+                        <form>
+                        <input type="text" placeholder="Título">
+                        <input type="text" placeholder="Igredientes">
+                        <input type="number" placeholder="Tempo de Cozimento">
+                        <textarea placeholder="Modo de preparação"></textarea>
+                        <button type="submit">Publicar</button>
+                        </form>
+                    </div>
+                </div>
             <div class="containerReceitas">
                 
             <div class="card">
@@ -258,5 +269,6 @@
             </footer>
 
     </body>
+    <script src="/js/index.js"></script>
 </html>
 
