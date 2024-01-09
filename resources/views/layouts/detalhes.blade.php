@@ -6,8 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
 {{ $receita  }}
 </body>
 </html>

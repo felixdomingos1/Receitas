@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Receitas;
-use App\Providers\UserDataServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class ReceitasController extends Controller
@@ -14,7 +12,6 @@ class ReceitasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() 
     public function index()
     {
         return Receitas::all();
@@ -32,20 +29,14 @@ class ReceitasController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate([
+            $request-> validate([
                 'title' => 'required|string|max:255',
                 'ingredient' => 'required|string|max:255',
-                'preparationMethod' => 'required|string',
+                'preparationTime' => 'required|integer',
+                'preparationMethod' => 'required| string|in:usuario,administrador',
+                'user_id' => 'required|integer',
             ]);
-            $receitas = Receitas::all();
-
-            $userId = Auth::id();
-            
-            $newReceita = new Receitas(array_merge(['user_id' => $userId ], $request->all()));
-            $newReceita->save();
-            
-            
-            return view('layouts.home')->with('receitas',$receitas );
+            return $receitas = $this->create($request->all());
 
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->messages();
@@ -60,7 +51,7 @@ class ReceitasController extends Controller
      */
     public function show(string $id)
     {
-        // return Receitas::where('id', $id)->firstOrFail();
+        return Receitas::where('id', $id)->firstOrFail();
     }
 
     /**

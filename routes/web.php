@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DetalhesController;
 use App\Http\Controllers\HomeController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
@@ -22,35 +23,28 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// Route::get('/recipes', [RecipeController::class, 'index']);
-
-// require __DIR__.'/auth.php';
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+// Route::get('/', [HomeController::class, 'index'])->name('app')->middleware('auth');
+// Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register']);
+
+// Route::get('/login', [ LoginController::class, 'showLoginForm' ])->name('login')->middleware('auth');
+// Route::post('/login', [ LoginController::class, 'login' ]);
+
+
+Route::get('/', [HomeController::class, 'showApp'])->name('app');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [ LoginController::class, 'login' ]);
+
+Route::get('signup', [RegisterController::class, 'index'])->name('signup');
+Route::post('signup',[RegisterController::class, 'register']);
+
+Route::post('/logout', [ LoginController::class, 'logout' ])->name('logout');
 // Minhas Cenas
 
 

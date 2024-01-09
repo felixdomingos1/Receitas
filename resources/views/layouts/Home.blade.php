@@ -20,15 +20,24 @@
         <li>Detalhes</li>
        </ul>
         <div class="singInOut">
-       
+        @if($userData)
+            <p>Olá, {{ $userData-> first_name}}</p>
+         @endif
+       <span></span>
+       @if($userData)
+            <p>Olá, {{ $userData-> userType }}</p>
+        @endif
             <nav>
                 @auth
+
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class='logoutBtn'>Logout</button>
                     </form>
                 @else
+
                     <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('signup') }}">signup</a>
                 @endauth
             </nav>
         </div>
@@ -62,6 +71,17 @@
                             <textarea name="preparationMethod" id="preparationMethod" placeholder="Modo de preparação"></textarea>
                             <button type="submit">Publicar</button>
                         </form>
+               @auth
+                <form action="" id="publicReceitas" name="publicReceitas">
+                        <input type="text">
+                        <button type="submit">Enviar</button>
+                    </form>
+               @endauth
+
+                <div class="receita">
+                    <div class="left">
+                         <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
+                         <h2>Arroz com Feijão</h2>
                     </div>
                 </div>
             <div class="containerReceitas">

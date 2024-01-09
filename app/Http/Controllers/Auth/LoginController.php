@@ -13,10 +13,16 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+   
     use AuthenticatesUsers;
 
     public function index() 
     {
+
+    public function index() {
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
         if (Auth::id()) {
             $receitas = Receitas::all();
             return view('layouts.home')->with('receitas',$receitas );
@@ -28,6 +34,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/home')->with('user', $credentials); // Redirecionar para a página desejada após o login
+            
+        }else {
+            return back()->withErrors(['login' => 'Credenciais inválidas.']);
             if (Auth::attempt($credentials)) {
 
             $user = User::where('email', $credentials['email']);
@@ -44,6 +56,5 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
 
 }

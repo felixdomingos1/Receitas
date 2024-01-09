@@ -26,6 +26,16 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/';
 
+
+    public function index()
+    {
+        return view('auth.SignUp');
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+        return view('auth.signup');
+    }
+
   
 
     public function index()
@@ -45,6 +55,7 @@ class RegisterController extends Controller
                 'last_name' => ['required', 'string', 'max:255'],
                 // 'userType ' => ['required', 'string|in:usuario,administrador'],
                 'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
+                'userType' => 'required| string|in:usuario,administrador',
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
             ]);
 
@@ -52,8 +63,11 @@ class RegisterController extends Controller
 
             $this->guard()->login($user);
     
-            return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            // return $this->registered($request, $user)
+            
+            // ?: redirect($this->redirectPath());
+
+            return view('layouts.home');
     
         }catch (ValidationException $e) {
             $errors = $e->validator->errors()->messages();
@@ -61,8 +75,6 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($errors)->withInput();
         }
       
-
-
  
     }
 

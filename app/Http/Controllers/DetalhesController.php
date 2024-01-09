@@ -10,6 +10,9 @@ class DetalhesController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index()
+    {
+        //
     public function index($receitaId)
     {
         $receita = Receitas::find($receitaId);
@@ -22,6 +25,7 @@ class DetalhesController extends Controller
      */
     public function create()
     {
+        //    
         //
     }
 
