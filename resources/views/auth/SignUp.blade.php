@@ -48,7 +48,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('signup') }}">
 
         @csrf
 
@@ -56,6 +56,7 @@
 
         <input type="text" name="last_name" id="last_name" placeholder="ultimo nome">
         <input type="email" name="email" id="email" placeholder="email">
+        <input type="text" name="userType" id="userType" placeholder="Tipo de usuário">
         <input type="password" name="password" id="password" placeholder="palavra passe">
         <input type="password" name="password_confirmation" id="password_confirmation" placeholder="confirmar palavra passe">
         <button type="submit">Enviar</button>

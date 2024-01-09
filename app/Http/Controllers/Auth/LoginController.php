@@ -12,22 +12,16 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
+   
     use AuthenticatesUsers;
 
-    public function showLoginForm() 
-    {
-        return view('Auth/Login');
+
+    public function index() {
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+
+        return view('auth.login');
     }
 
 
@@ -36,7 +30,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')->with('user', $credentials); // Redirecionar para a página desejada após o login
+            return redirect()->intended('/home')->with('user', $credentials); // Redirecionar para a página desejada após o login
             
         }else {
             return back()->withErrors(['login' => 'Credenciais inválidas.']);
@@ -50,6 +44,5 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
 
 }

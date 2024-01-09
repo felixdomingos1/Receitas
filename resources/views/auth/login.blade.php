@@ -54,7 +54,7 @@
         <input type="email" name="email" id="email" placeholder="email">
         <input type="password" name="password" id="password" placeholder="palavra passe">
         <button type="submit">Enviar</button>
-        <a href="{{route('home')}}"> continuar anonimo</a>
+        <a href="{{route('app')}}"> continuar anonimo</a>
     </form>
 
     

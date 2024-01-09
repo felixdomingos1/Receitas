@@ -7,6 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -25,24 +26,14 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/';
 
-    public function __construct()
+
+    public function index()
     {
-        $this->middleware('guest');
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+        return view('auth.signup');
     }
-
-    public function showRegistrationForm()
-    {
-        return view('Auth/SignUp');
-    }
-
-    // public function register(Request $request)
-    // {
-    //     $this->validator($request->all())->validate();
-
-    //     $this->create($request->all());
-
-    //     return redirect($this->redirectPath());
-    // }
 
     public function register(Request $request)
     {
@@ -52,6 +43,7 @@ class RegisterController extends Controller
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
+                'userType' => 'required| string|in:usuario,administrador',
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
             ]);
 
@@ -59,9 +51,11 @@ class RegisterController extends Controller
 
             $this->guard()->login($user); // Faz o login automaticamente após o registro
     
-            return $this->registered($request, $user)
+            // return $this->registered($request, $user)
             
-            ?: redirect($this->redirectPath());
+            // ?: redirect($this->redirectPath());
+
+            return view('layouts.home');
     
         }catch (ValidationException $e) {
             $errors = $e->validator->errors()->messages();
@@ -69,8 +63,6 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($errors)->withInput();
         }
       
-
-
  
     }
 

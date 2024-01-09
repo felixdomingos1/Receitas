@@ -8,11 +8,8 @@ use Laravel\Ui\Presets\Vue;
 
 class HomeController extends Controller
 {
-    
-    public function __construct()
-    {
-        $this->middleware('auth')->except('showApp');
-    }
+
+
     // public function index()
     // {
     //     if (Auth::id()) {
@@ -35,19 +32,33 @@ class HomeController extends Controller
     //    return  view('layouts/Home');
     // }
 
-//minhas cenas!!!
+    //minhas cenas!!!
 
-        public function index()  {
-            return route('layout.home');
+
+    public function index()
+    {
+
+
+        if (Auth::id()) {
+
+            $userType = Auth()->user()->userType;
+
+            if ($userType === 'administrador') {
+                return view('admin.adminHome');
+            }
+            if ($userType === 'usuario') {
+                return view('layouts.home');
+            }
         }
-
-
-
-
-
-    public function showApp() {
         return view('app');
     }
 
+    public function showApp()
+    {
 
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+        return view('app');
+    }
 }

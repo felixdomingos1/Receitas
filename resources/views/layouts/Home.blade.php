@@ -19,7 +19,7 @@
        <header>
        <span></span>
        @if($userData)
-            <p>Olá, {{ $userData-> first_name}}</p>
+            <p>Olá, {{ $userData-> userType }}</p>
         @endif
             <nav>
                 @auth
@@ -31,8 +31,7 @@
                 @else
 
                     <a href="{{ route('login') }}">Login</a>
-                    DIFERENTE
-                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('signup') }}">signup</a>
                 @endauth
 
             </nav>
