@@ -21,3 +21,8 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+function Postar(){
+    console.log('a');
+}
+Postar()

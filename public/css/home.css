@@ -1,84 +1,230 @@
-
-img{
-    width: 50px;
-    height: 100px;
-}
-
+ 
 main {
-    margin-top: 30px;
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 8rem;
+}
+
+header{
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 10px 2px 3px rgba(0,0,0,0.360);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25px 0;
+}  
+.Logo{
+    font-size: 30px;
+    font-weight: 600;
+    color: #9d63d3;
+    background: transparent;
+}
+.Logo strong{
+    background: transparent;
+    color: #f5ae50;
+}
+.ulHeader{
+    display: flex;
+    background: transparent;
+}
+.ulHeader li{
+    background: transparent;
+    margin: 0 1rem;
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 5px;
+}
+.ulHeader li:hover{
+    color: #9d63d3;
+    background: #f5c688;
+}
+li.active{
+    color: #9d63d3;
+    background: #f5c688;
+}
+.singInOut {
+    background: #fff;
+}
+nav form .logoutBtn{
+    background: #ff4524;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+    border-radius: 6px;
+    padding: 5px;
+    border: none;
+}
+main #publicReceitas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 1000px;
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 10px;
+    background: #fff;
+}
+main #publicReceitas input{
+    height: 3rem;
     width: 70%;
-    margin: 0 auto;
-
-    border: 1px solid #000;
-    padding: 20px;
-}
-
-header{
-    box-shadow: 1px 2px 3px #000;
-    margin-bottom: 30px;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:30px 70px;
-}
-
-nav ul{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#publicReceitas {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-}
-#publicReceitas input{
-    width: 90%;
-    padding: 20px;
+    padding: 4px;
+    border-radius: 10px;
+    outline: none;
+    border:1px solid #f5ae50;
+    background: #faf4f4;
+    font-size: 16px;
 }
 #publicReceitas button{
+    border-radius: 10px;
+    outline: none;
+    border: none;
     padding: 20px 5px;
+    width: 25%;
+    height: 4rem;
+    background: #f5ae50;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ffffff;
 }
-
-.receita{
+.containerReceitas{
     display: flex;
     align-items: center;
-    margin: 20px 0;
-    
-    border: 1px solid #999;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    gap: 17px;
+    justify-content: center;
+    margin-bottom: 5rem;
 }
-
-.receita .left, .receita .right{
-    width: 50%;
-    min-height:55vh ;
-    max-height:55vh ;
-    padding: 10px;
-    
-}
-.receita .left {
-    border-right: 1px solid #999;
-}
-.receita .left img{
-    width: 100%;
-    height: 60%;
-}
-
-.receita .left h2, .receita .right h2{
+.card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
     text-align: center;
-    padding: 10px;
-
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .user-rating {
+    margin-top: 10px;
+  }
+  
+  .user-rating input[type="radio"] {
+    display: none;
+  }
+  
+  .user-rating label {
+    font-size: 20px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  
+  .user-rating label:hover ,
+.user-rating  label:hover ~ label
+{
+    color: #f90;
+}
+  
+  .user-rating input[type="radio"]:checked ~ label {
+    color: #f90;
+  }
+.user-datas{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+.user-datas .imgUser{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5ae50;
+    font-weight: 550;
+    color: #9d63d3;
+    margin-right: 5px;
+}
+.user-datas .imgUser img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.user-datas .userName{
+    color: #9d63d3;
+}
+footer{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    background: #f5ae50;
+    padding: 1rem 0;
+    bottom: 0;
 }
 
-.receita .right ul {
-    padding: 2px;
-    margin-left: 50px;
+/* Login and SignUp Styles start here  */
+.bodyContent {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+.container {
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container form {
+    background: #fff;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
+  }
+  .container form h2{
+    background: #fff;
+  }
+  input, button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #f5ae50;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #da8920;
+  }
