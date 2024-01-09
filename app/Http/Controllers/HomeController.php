@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Ui\Presets\Vue;
@@ -16,33 +17,26 @@ class HomeController extends Controller
             $userType = Auth()->user()->userType;
 
             if ($userType === 'admin') {
-                return view('Admin/adminHome');
+                return view('admin.adminHome');
             }
-            elseif ($userType ==='user') {
-                return view('layouts/Home');
+            if ($userType ==='user') {
+                $receitas = Receitas::all();
 
-            } else {
-                return view('app');
-            }
+                return view('layouts.home')->with('receitas',$receitas );
+
+            } 
         }
-        return view('app');
 
     }
 
 
     public function show()
     {
+        if (Auth::id()) {
+            $receitas = Receitas::all();
+            
+            return view('layouts.home')->with('receitas',$receitas );
+        }
        return  view('app');
     }
-
-    // public function store()
-    // {
-    //    return view('Auth/SignUp');
-    // }
-
-
-    // public function destroy()
-    // {
-    //     dd('Litar');
-    // }
 }

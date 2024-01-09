@@ -45,7 +45,7 @@
 
                     <li><!-- resources/views/layouts/app.blade.php ou onde quer que seus links/botões de registro estejam -->
                         @guest
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('signup') }}">Register</a>
                         @endguest
                     </li>
 
