@@ -12,7 +12,7 @@
     <div class="bodyContent">
         
     <div class="container">
-        <form class="signup-form" method="POST" action="{{ route('register') }}">
+        <form class="signup-form" method="POST" action="{{ route('signup') }}">
             @csrf
         <h2>Signup</h2>
         <input type="text" name="first_name" id="first_name" placeholder="Primeiro nome">

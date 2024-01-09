@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/home.css">  
 
-        </script>
     </head>
     <body>
        <header>
@@ -21,9 +20,7 @@
         <li>Detalhes</li>
        </ul>
         <div class="singInOut">
-        @if($userData)
-            <p>Olá, {{ $userData-> first_name}}</p>
-         @endif
+       
             <nav>
                 @auth
                     <form action="{{ route('logout') }}" method="POST">
@@ -40,6 +37,15 @@
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
 
             <main>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <form  class='form' action="" id="publicReceitas" name="publicReceitas">
                     <input type="text" id="openModal">
                     <button >Publicar</button>
@@ -48,218 +54,50 @@
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <h2>Publicação</h2>
-                        <form>
-                        <input type="text" placeholder="Título">
-                        <input type="text" placeholder="Igredientes">
-                        <input type="number" placeholder="Tempo de Cozimento">
-                        <textarea placeholder="Modo de preparação"></textarea>
-                        <button type="submit">Publicar</button>
+                        <form method="POST" action="{{ route('receitas')}}">
+                        @csrf
+                            <input type="text" name="title" id="title" placeholder="Título">
+                            <input type="text" name="ingredient" id="ingredient" placeholder="Igredientes">
+                            <input type="text" name="preparationTime" id="preparationTime" placeholder="Tempo de Cozimento">
+                            <textarea name="preparationMethod" id="preparationMethod" placeholder="Modo de preparação"></textarea>
+                            <button type="submit">Publicar</button>
                         </form>
                     </div>
                 </div>
             <div class="containerReceitas">
-                
-            <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt="">
-                    <h2>Arroz com Feijão</h2>
-                    <div class="user-rating">
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">1</label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">2</label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">3</label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">4</label>
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">5</label>
-                    </div>
-                    <div class="user-datas">
-                        <div class="imgUser">
-                            <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                        {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
-                        </div>
-                        <div class="userName">
-                            {{$userData -> first_name}} {{$userData -> last_name}}
-                        </div>
-                    </div>
-                </div>
+           
 
+                
+                @foreach (array_reverse($receitas->all()) as $receita)
+                <div class="card">
+
+           
+                       <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">  <img  src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> </a>
+                        <h2>{{$receita->title}}</h2>
+                        <div class="user-rating">
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">1</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">2</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">3</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">4</label>
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">5</label>
+                        </div>
+                        <div class="user-datas">
+                            <div class="imgUser">
+                                <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
+                            {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
+                            </div>
+                            <div class="userName">
+                                {{$userData -> first_name}} {{$userData -> last_name}}
+                            </div>
+                        </div>
+                        </div>
+                    @endforeach
+               
                 
             </div>  
 
@@ -270,5 +108,6 @@
 
     </body>
     <script src="/js/index.js"></script>
+    <script src="/js/home.js"></script>
 </html>
 
