@@ -7,6 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -25,24 +26,15 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/';
 
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
-    public function showRegistrationForm()
+    public function index()
     {
         return view('auth.SignUp');
+        if (Auth::id()) {
+            return view('layouts.home');
+        }
+        return view('auth.signup');
     }
-
-    // public function register(Request $request)
-    // {
-    //     $this->validator($request->all())->validate();
-
-    //     $this->create($request->all());
-
-    //     return redirect($this->redirectPath());
-    // }
 
     public function register(Request $request)
     {
@@ -52,6 +44,7 @@ class RegisterController extends Controller
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
+                'userType' => 'required| string|in:usuario,administrador',
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
             ]);
 
@@ -59,19 +52,18 @@ class RegisterController extends Controller
 
             $this->guard()->login($user); // Faz o login automaticamente após o registro
     
-            return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            // return $this->registered($request, $user)
+            
+            // ?: redirect($this->redirectPath());
+
+            return view('layouts.home');
     
         }catch (ValidationException $e) {
-            // A validação falhou, você pode acessar os erros assim:
             $errors = $e->validator->errors()->messages();
 
-            // Faça algo com os erros, como redirecionar de volta com os erros
             return redirect()->back()->withErrors($errors)->withInput();
         }
       
-
-
  
     }
 

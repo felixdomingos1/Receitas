@@ -34,6 +34,28 @@
         </form>
     </div>
     </div>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form method="POST" action="{{ route('signup') }}">
+
+        @csrf
+
+        <input type="text" name="first_name" id="first_name" placeholder="primeiro nome">
+
+        <input type="text" name="last_name" id="last_name" placeholder="ultimo nome">
+        <input type="email" name="email" id="email" placeholder="email">
+        <input type="text" name="userType" id="userType" placeholder="Tipo de usuário">
+        <input type="password" name="password" id="password" placeholder="palavra passe">
+        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="confirmar palavra passe">
+        <button type="submit">Enviar</button>
+    </form>
     
 </body>
 </html>
